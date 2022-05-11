@@ -22,8 +22,12 @@
   overflow: hidden;
 }
 
+svg {
+}
+
 .cookie {
   transform: scale(0.8);
+  overflow: visible;
 }
 
 .text {
