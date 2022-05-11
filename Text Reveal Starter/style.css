@@ -51,11 +51,16 @@ nav {
 .cta-text span {
   padding: 0rem 0.4rem;
   text-shadow: rgba(0 0 0 /0.4) 0px 0px 20px;
+  display: inline-block;
+}
+
+.cta-text h2 {
+  overflow: hidden;
 }
 
 .cta-button {
   margin: 1rem;
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 2rem;
   background-color: white;
   font-family: "Poppins";
   border-style: none;
