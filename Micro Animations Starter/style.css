@@ -30,3 +30,8 @@ body {
 .container > * > * {
   margin-left: 1.2rem;
 }
+
+.notification-svg,
+.message-svg {
+  overflow: visible;
+}
