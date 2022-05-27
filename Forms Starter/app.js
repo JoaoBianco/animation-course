@@ -58,5 +58,52 @@ form.addEventListener("click", () => {
         });
       }
     }
+    //Validation
+    input.addEventListener("input", (e) => {
+      //name validation
+      if (e.target.type === "text") {
+        let inputText = e.target.value;
+        if (inputText.length > 2) {
+          colorize("#6391e8", line, placeholder);
+        } else {
+          colorize("#fe8c99", line, placeholder);
+        }
+      }
+      //email validation
+      if (e.target.type === "email") {
+        let inputEmail = e.target.value;
+        if (validateEmail(inputEmail)) {
+          colorize("#6391e8", line, placeholder);
+        } else {
+          colorize("#fe8c99", line, placeholder);
+        }
+      }
+      //phone validation
+      if (e.target.type === "text") {
+        let inputPhone = e.target.value;
+        if (validatePhone(inputPhone)) {
+          colorize("#6391e8", line, placeholder);
+        } else {
+          colorize("#fe8c99", line, placeholder);
+        }
+      }
+    });
   });
 });
+
+// checking email validation
+
+function validateEmail(email) {
+  let re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+function validatePhone(phone) {
+  let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(phone);
+}
+
+//Colorize func
+function colorize(color, line, placeholder) {
+  gsap.to(line, { stroke: color, duration: 0.75 });
+  gsap.to(placeholder, { color: color, duration: 0.75 });
+}
