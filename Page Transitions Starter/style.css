@@ -75,6 +75,13 @@ nav img {
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 250ms ease, box-shadow 200ms ease-out;
+}
+
+.showcase-button:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 0px #333;
 }
 
 .showcase-arrow {
