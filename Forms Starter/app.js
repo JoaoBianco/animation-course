@@ -170,10 +170,12 @@ const tl3 = gsap.timeline({
 
 button.addEventListener("click", (e) => {
   e.preventDefault();
+  gsap.set("#character", { display: "block" });
   tl3.to(".contact-right, .contact-left", {
     y: 30,
     opacity: 0,
     PointerEvents: "none",
+    display: "none",
   });
   tl3.to("form", { scale: 0.8 }, "<");
   tl3.fromTo(".submitted", { opacity: 0, y: 30 }, { opacity: 1, y: 0 });
@@ -182,6 +184,6 @@ button.addEventListener("click", (e) => {
   tl3.fromTo(
     "#hand",
     { rotation: 0, y: 0 },
-    { rotation: -10, y: 2, ease: "elastic(3,0.3)", duration: 2, delay: 1 }
+    { rotation: -4, y: 1, ease: "elastic(3,0.2)", duration: 2 }
   );
 });

@@ -24,8 +24,29 @@ form {
   position: relative;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1400px) {
   form {
+    width: 60vw;
+    padding: 2rem 3rem;
+  }
+}
+
+@media (max-width: 902px) {
+  #character {
+    display: none;
+  }
+  .promo-container {
+    align-items: flex-start;
+  }
+  div > .checkbox-label {
+    width: 100%;
+  }
+}
+
+@media (max-width: 812px) {
+  form {
+    width: 70vw;
+    min-height: 60vh;
     flex-direction: column;
   }
 }
@@ -77,6 +98,7 @@ form {
   bottom: 0;
   overflow: visible;
   opacity: 0.8;
+  max-width: 100%;
 }
 
 .checkbox-label {
