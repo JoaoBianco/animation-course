@@ -79,7 +79,7 @@ form.addEventListener("click", () => {
         }
       }
       //phone validation
-      if (e.target.type === "text") {
+      if (e.target.type === "tel") {
         let inputPhone = e.target.value;
         if (validatePhone(inputPhone)) {
           colorize("#6391e8", line, placeholder);
@@ -140,4 +140,48 @@ checkbox.addEventListener("click", () => {
     tl2.to(".checkbox-fill", { top: "100%" });
     tl2.to(".checkbox-label", { color: "#c5c5c5" }, "<");
   }
+});
+
+//character
+gsap.set("#eye", { transformOrigin: "center" });
+gsap.fromTo(
+  "#eye",
+  { scaleY: 1 },
+  {
+    scale: 0.8,
+    repeat: -1,
+    yoyo: true,
+    repeatDelay: 0.5,
+    ease: "Power2.easeOut",
+  }
+);
+
+gsap.fromTo(
+  "#eyebrow",
+  { y: 0 },
+  { y: -1, repeat: -1, yoyo: true, repeatDelay: 1, ease: "Power2.easeOut" }
+);
+
+//submit button
+const button = document.querySelector("button");
+const tl3 = gsap.timeline({
+  defaults: { duration: 0.75, ease: "Power2.easeOut" },
+});
+
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  tl3.to(".contact-right, .contact-left", {
+    y: 30,
+    opacity: 0,
+    PointerEvents: "none",
+  });
+  tl3.to("form", { scale: 0.8 }, "<");
+  tl3.fromTo(".submitted", { opacity: 0, y: 30 }, { opacity: 1, y: 0 });
+  //Hand wave
+  gsap.set("#hand", { transformOrigin: "left" });
+  tl3.fromTo(
+    "#hand",
+    { rotation: 0, y: 0 },
+    { rotation: -10, y: 2, ease: "elastic(3,0.3)", duration: 2, delay: 1 }
+  );
 });
