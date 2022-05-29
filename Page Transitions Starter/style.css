@@ -94,6 +94,7 @@ nav img {
 /*BUBBLES*/
 .circle {
   position: absolute;
+  z-index: -1;
 }
 
 .circle-1 {
@@ -111,4 +112,23 @@ nav img {
   left: 20%;
   top: 15%;
   transform: scale(1.5);
+}
+
+@media screen and (max-width: 912px) {
+  .showcase {
+    flex-direction: column;
+  }
+  section .image-container {
+    padding: 2rem 0;
+    justify-content: center;
+  }
+  section .image-container img {
+    width: 80%;
+  }
+  .showcase-title {
+    font-size: 1.4rem;
+  }
+  .showcase-subtitle {
+    font-size: 1rem;
+  }
 }
