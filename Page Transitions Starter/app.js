@@ -17,7 +17,56 @@ const leaveAnimation = (current, done) => {
     tlLeave.fromTo(arrow, { opacity: 1, y: 0 }, { opacity: 0, y: 50 }),
     tlLeave.fromTo(product, { y: 0, opacity: 1 }, { y: 100, opacity: 0 }, "<"),
     tlLeave.fromTo(text, { y: 0, opacity: 1 }, { y: 100, opacity: 0 }, "<"),
-    tlLeave.to(current, { zIndex: 1, onComplete: done }, "<")
+    tlLeave.fromTo(
+      circles,
+      { y: 0, opacity: 1 },
+      {
+        y: -200,
+        opacity: 0,
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+        duration: 1,
+        onComplete: done,
+      },
+      "<"
+    )
+  );
+};
+
+const enterAnimation = (next, done) => {
+  const product = next.querySelector(".image-container");
+  const text = next.querySelector(".showcase-text");
+  const circles = next.querySelectorAll(".circle");
+  const arrow = next.querySelector(".showcase-arrow");
+
+  return (
+    tlEnter.fromTo(arrow, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }),
+    tlEnter.fromTo(product, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "<"),
+    tlEnter.fromTo(text, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "<"),
+    tlEnter.fromTo(
+      circles,
+      { y: -200, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        ease: "back.out(1.7)",
+        duration: 1,
+      },
+      "<"
+    ),
+    tlEnter.fromTo(
+      ".circle-1",
+      { x: -200 },
+      { x: 0, ease: "back.out(1.7)" },
+      "<5%"
+    ),
+    tlEnter.fromTo(
+      ".circle-2",
+      { x: 200 },
+      { x: 0, ease: "back.out(1.7)", onComplete: done },
+      "<5%"
+    )
   );
 };
 
@@ -36,11 +85,7 @@ barba.init({
       enter(data) {
         const done = this.async();
         let next = data.next.container;
-        gsap.fromTo(
-          next,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5, onComplete: done }
-        );
+        enterAnimation(next, done);
       },
     },
   ],
