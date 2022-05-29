@@ -78,11 +78,13 @@ barba.init({
     //showcase transitions
     {
       name: "default",
+
+      //IMPORTANT!
       once(data) {
         const done = this.async();
         let next = data.next.container;
         let gradient = getGradient(data.next.namespace);
-        gsap.set("body", { background: gradient });
+        gsap.set("body", { background: gradient, duration: 0.5 });
         enterAnimation(next, done, gradient);
       },
       leave(data) {
